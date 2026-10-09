@@ -5,6 +5,9 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,10 +20,10 @@ jobs:
         with:
           node-version: '22'
           cache: 'npm'
-          cache-dependency-path: worker/package-lock.json   # 👈 指向 worker 目录
+          cache-dependency-path: worker/package-lock.json
 
       - name: Install dependencies
-        run: npm --prefix worker ci                        # 👈 改这里
+        run: npm --prefix worker ci
 
       - name: Run configure
         run: npm run configure
