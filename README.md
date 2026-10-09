@@ -93,7 +93,7 @@ flowchart LR
 | Stash | [https://raw.githubusercontent.com/houxinggui888/wloc/refs/heads/main/modules/wloc.stoverride](https://raw.githubusercontent.com/houxinggui888/wloc/refs/heads/main/modules/wloc.stoverride) |
 | Shadowrocket | [https://raw.githubusercontent.com/houxinggui888/wloc/refs/heads/main/modules/wloc.module](https://raw.githubusercontent.com/houxinggui888/wloc/refs/heads/main/modules/wloc.module) |
 
-选点页面：尚未配置公共实例，请按下方说明自行部署。https://wloc.xepesw.workers.dev/
+选点页面：尚未配置公共实例，请按下方说明自行部署。
 
 [浏览源码](https://github.com/houxinggui888/wloc) · [部署到 Cloudflare Workers](https://deploy.workers.cloudflare.com/?url=https://github.com/houxinggui888/wloc/tree/main/worker)
 <!-- subscriptions:end -->
