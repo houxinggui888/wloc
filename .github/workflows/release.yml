@@ -1,0 +1,38 @@
+name: Build and Release Check
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:   # 允许手动触发，方便调试
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'   # 强制使用 Node.js 22 或更高版本
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run configure
+        run: npm run configure
+
+      - name: Run release check
+        run: npm run check:release
+
+      - name: Commit generated files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git diff --quiet && git diff --staged --quiet || git commit -m "chore: auto-generate modules [skip ci]"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
